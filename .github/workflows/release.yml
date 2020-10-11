@@ -20,7 +20,7 @@ jobs:
         release_name: Release ${{ github.ref }}
         draft: false
         prerelease: false
-    - run: echo ${{ steps.create_release.outputs.upload_url }} > upload_url
+    - run: echo '${{ steps.create_release.outputs.upload_url }}' > upload_url
     - name: Upload upload_url
       uses: actions/upload-artifact@v1
       with:
@@ -51,6 +51,8 @@ jobs:
       uses: actions/download-artifact@v1
       with:
         name: upload_url
+    - name: Cat enupload_urlv
+      run: cat upload_url/upload_url
     - name: Set upload url
       run: echo "UPLOAD_URL=$(cat upload_url/upload_url)" >> $GITHUB_ENV
     - name: Set release version
