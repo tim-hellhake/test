@@ -22,6 +22,9 @@ jobs:
         with:
           command: build
           args: --release
+      - name: Create package
+        run: |
+          tar -czvf abc.tar.gz -C target/release abc
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1.0.0
@@ -39,6 +42,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: target/release/abc
-          asset_name: abc
+          asset_path: abc.tar.gz
+          asset_name: abc.tar.gz
           asset_content_type: application/octet-stream
