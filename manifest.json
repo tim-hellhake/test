@@ -1,0 +1,112 @@
+{
+  "manifest_version": 1,
+  "id": "lumencache-adapter",
+  "name": "Lumencache",
+  "short_name": "Lumencache",
+  "version": "1.0.0",
+  "description": "Connect your lumencache devices",
+  "homepage_url": "https://github.com/tim-hellhake/lumencache-adapter#readme",
+  "license": "MPL-2.0",
+  "author": "Tim Hellhake",
+  "gateway_specific_settings": {
+    "webthings": {
+      "exec": "{path}/lumencache-adapter {path}",
+      "strict_min_version": "1.0.0",
+      "strict_max_version": "*",
+      "primary_type": "adapter"
+    }
+  },
+  "options": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "serialAdapters": {
+          "type": "array",
+          "title": "List of serial adapters",
+          "items": {
+            "type": "object",
+            "title": "Lumencache Serial adapter",
+            "required": [
+              "title",
+              "port"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "The ID of the adapter (will be generated for you)",
+                "readOnly": true
+              },
+              "title": {
+                "type": "string",
+                "title": "The title of the adapter"
+              },
+              "port": {
+                "type": "string",
+                "title": "The serial port of the lumencache gateway (default is /dev/ttyAMA0)"
+              }
+            }
+          }
+        },
+        "tcpAdapters": {
+          "type": "array",
+          "title": "List of TCP adapters",
+          "items": {
+            "type": "object",
+            "title": "Lumencache TCP adapter",
+            "required": [
+              "title",
+              "host",
+              "port"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "The ID of the adapter (will be generated for you)",
+                "readOnly": true
+              },
+              "title": {
+                "type": "string",
+                "title": "The title of the adapter"
+              },
+              "host": {
+                "type": "string",
+                "title": "The hostname of the lumencache gateway"
+              },
+              "port": {
+                "type": "number",
+                "title": "The port of the lumencache gateway"
+              }
+            }
+          }
+        },
+        "expertSettings":{
+          "type": "object",
+          "title": "Expert settings",
+          "properties": {
+            "maxId": {
+              "type": "integer",
+              "title": "Maximum id to search for",
+              "minimum": 5,
+              "maximum": 240,
+              "default": 240
+            },
+            "txDelayMs": {
+              "type": "integer",
+              "title": "Minimum time in milliseconds between two outgoing messages",
+              "minimum": 10,
+              "maximum": 2000,
+              "default": 200
+            },
+            "responseTimeoutMs": {
+              "type": "integer",
+              "title": "Time in milliseconds to wait for an response",
+              "minimum": 10,
+              "maximum": 2000,
+              "default": 500
+            }
+          }
+        }
+      }
+    }
+  }
+}
