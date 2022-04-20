@@ -3,7 +3,7 @@
   "id": "lumencache-adapter",
   "name": "Lumencache",
   "short_name": "Lumencache",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Connect your lumencache devices",
   "homepage_url": "https://github.com/tim-hellhake/lumencache-adapter#readme",
   "license": "MPL-2.0",
