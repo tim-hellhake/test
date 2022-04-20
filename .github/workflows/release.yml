@@ -49,7 +49,6 @@ jobs:
     env:
       UPLOAD_URL: ${{ needs.create_release.outputs.upload_url }}
       FOO: ${GITHUB_REF:10}
-      FOOO: ${{GITHUB_REF:10}}
 
     steps:
     - run: printenv
